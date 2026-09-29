@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Review Code | AI Code Review Agent{% endblock %}
+
+{% block content %}
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Accurate Reviews With Memory</p>
+      <h1>AI Code Review Agent with Memory</h1>
+      <p class="hero-copy">
+        Review Python, Java, C++, and JavaScript code with a stricter prompt,
+        personalized memory, and a dashboard that tracks your progress.
+      </p>
+    </div>
+    <a class="secondary-link" href="{{ url_for('dashboard') }}">Open Dashboard</a>
+  </header>
+
+  <main class="grid-layout">
+    <section class="panel input-panel">
+      <div class="panel-heading">
+        <h2>Review Your Code</h2>
+        <p>Choose a language, paste your code, and ask for an honest review.</p>
+      </div>
+
+      <label class="field-label" for="language-select">Programming Language</label>
+      <select id="language-select" class="select-input">
+        <option>Python</option>
+        <option>Java</option>
+        <option>C++</option>
+        <option>JavaScript</option>
+      </select>
+
+      <label class="field-label" for="code-input">Code</label>
+      <textarea
+        id="code-input"
+        class="code-input"
+        placeholder="def find_max(nums):&#10;    if not nums:&#10;        return None&#10;    largest = nums[0]&#10;    for num in nums:&#10;        if num > largest:&#10;            largest = num&#10;    return largest"
+      ></textarea>
+
+      <div class="actions">
+        <button id="review-button" class="primary-button">Review Code</button>
+        <span id="status-text" class="status-text"></span>
+      </div>
+    </section>
+
+    <section class="panel result-panel">
+      <div class="panel-heading">
+        <h2>Review Results</h2>
+        <p>Warnings, mistakes, and personalized feedback will appear here.</p>
+      </div>
+
+      <div id="warning-box" class="message-box warning hidden"></div>
+      <div id="error-box" class="message-box error hidden"></div>
+
+      <div id="review-results" class="review-results empty-state">
+        Submit some code to see the review.
+      </div>
+    </section>
+  </main>
+{% endblock %}

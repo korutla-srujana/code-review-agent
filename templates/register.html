@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Register | AI Code Review Agent{% endblock %}
+
+{% block content %}
+  <section class="auth-shell">
+    <div class="auth-card">
+      <p class="eyebrow">Get Started</p>
+      <h1>Create Account</h1>
+      <p class="hero-copy">
+        Create a local account to save reviews, memory, and dashboard insights.
+      </p>
+
+      <form method="post" action="{{ url_for('register_post') }}" class="auth-form">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" required />
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required />
+
+        <button type="submit" class="primary-button auth-button">Register</button>
+      </form>
+
+      <p class="auth-switch">
+        Already have an account?
+        <a href="{{ url_for('login') }}">Login here</a>
+      </p>
+    </div>
+  </section>
+{% endblock %}

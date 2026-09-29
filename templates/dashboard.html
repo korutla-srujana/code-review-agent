@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | AI Code Review Agent{% endblock %}
+
+{% block content %}
+  <header class="hero compact">
+    <div>
+      <p class="eyebrow">Progress Tracking</p>
+      <h1>Your Review Dashboard</h1>
+      <p class="hero-copy">
+        See your review count, common mistakes, recent history, and whether repeated issues
+        are improving over time.
+      </p>
+    </div>
+    <a class="secondary-link" href="{{ url_for('review_page') }}">Back To Review</a>
+  </header>
+
+  <main class="dashboard-layout" id="dashboard-root" data-dashboard='{{ dashboard_data | tojson }}'>
+    <section class="stats-grid">
+      <article class="panel stat-card">
+        <p class="stat-label">Total Reviews</p>
+        <p class="stat-value" id="total-reviews">0</p>
+      </article>
+      <article class="panel stat-card">
+        <p class="stat-label">Clean Reviews</p>
+        <p class="stat-value" id="clean-reviews">0</p>
+      </article>
+      <article class="panel stat-card">
+        <p class="stat-label">Top Mistake</p>
+        <p class="stat-value" id="top-mistake">None yet</p>
+      </article>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="panel">
+        <div class="panel-heading">
+          <h2>Improvement Summary</h2>
+          <p id="summary-text">Loading summary...</p>
+        </div>
+        <div id="dashboard-error" class="message-box error hidden"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <h2>Most Common Mistakes</h2>
+          <p>The mistakes that appear most often in your review history.</p>
+        </div>
+        <ul id="common-mistake-list" class="plain-list"></ul>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <h2>Last 5 Reviews</h2>
+          <p>Your most recent review entries, stored with memory.</p>
+        </div>
+        <div id="history-list" class="history-list"></div>
+      </article>
+    </section>
+  </main>
+{% endblock %}

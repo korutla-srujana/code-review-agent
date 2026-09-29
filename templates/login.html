@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Login | AI Code Review Agent{% endblock %}
+
+{% block content %}
+  <section class="auth-shell">
+    <div class="auth-card">
+      <p class="eyebrow">Welcome Back</p>
+      <h1>Login</h1>
+      <p class="hero-copy">
+        Sign in to review code, save your history, and track improvement over time.
+      </p>
+
+      <form method="post" action="{{ url_for('login_post') }}" class="auth-form">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" required />
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required />
+
+        <button type="submit" class="primary-button auth-button">Login</button>
+      </form>
+
+      <p class="auth-switch">
+        Need an account?
+        <a href="{{ url_for('register') }}">Create one</a>
+      </p>
+    </div>
+  </section>
+{% endblock %}
